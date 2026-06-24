@@ -1,0 +1,136 @@
+import sharp from "sharp";
+import { writeFileSync } from "fs";
+
+const W = 1200, H = 630;
+
+const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a0a19"/>
+      <stop offset="100%" stop-color="#2a0e2a"/>
+    </linearGradient>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#B90FC2"/>
+      <stop offset="100%" stop-color="#E83EF0"/>
+    </linearGradient>
+    <linearGradient id="gradV" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B90FC2"/>
+      <stop offset="100%" stop-color="#E83EF0"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="40" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- Fondo oscuro -->
+  <rect width="${W}" height="${H}" fill="url(#bg)"/>
+
+  <!-- Círculos decorativos difusos -->
+  <circle cx="980" cy="120" r="220" fill="#B90FC2" opacity="0.12" filter="url(#softglow)"/>
+  <circle cx="200" cy="530" r="180" fill="#E83EF0" opacity="0.09" filter="url(#softglow)"/>
+  <circle cx="600" cy="320" r="300" fill="#9a0db0" opacity="0.06" filter="url(#softglow)"/>
+
+  <!-- Línea superior degradada -->
+  <rect x="0" y="0" width="${W}" height="5" fill="url(#grad)"/>
+
+  <!-- Ícono ojo (izquierda) -->
+  <g transform="translate(80, 240)">
+    <!-- Círculo exterior -->
+    <circle cx="75" cy="75" r="72" fill="none" stroke="url(#grad)" stroke-width="2.5" opacity="0.6"/>
+    <!-- Ojo SVG path simplificado -->
+    <g transform="translate(75,75)" fill="none" stroke="url(#grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M-52 0 C-35 -30 35 -30 52 0 C35 30 -35 30 -52 0Z" opacity="0.9"/>
+      <circle cx="0" cy="0" r="18" fill="url(#gradV)" opacity="0.95"/>
+      <circle cx="0" cy="0" r="9" fill="#1a0a19"/>
+      <circle cx="5" cy="-5" r="3.5" fill="white" opacity="0.9"/>
+    </g>
+  </g>
+
+  <!-- Separador vertical -->
+  <rect x="230" y="180" width="1.5" height="270" fill="url(#grad)" opacity="0.35"/>
+
+  <!-- Texto principal -->
+  <!-- Pill badge -->
+  <rect x="270" y="170" width="230" height="32" rx="16" fill="url(#grad)" opacity="0.15"/>
+  <rect x="270" y="170" width="230" height="32" rx="16" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.4"/>
+  <circle cx="290" cy="186" r="5" fill="url(#gradV)"/>
+  <text x="306" y="191" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#E83EF0" font-weight="600" letter-spacing="1">SALUD VISUAL · PERÚ</text>
+
+  <!-- Nombre marca -->
+  <text x="270" y="268" font-family="'Helvetica Neue', Arial, sans-serif" font-size="74" font-weight="800" fill="white" letter-spacing="-2">Ópticas</text>
+  <text x="270" y="350" font-family="'Helvetica Neue', Arial, sans-serif" font-size="74" font-weight="800" fill="url(#grad)" letter-spacing="-2">GMA</text>
+
+  <!-- Tagline -->
+  <text x="270" y="400" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" fill="rgba(255,255,255,0.65)" letter-spacing="0.3">Especialistas en salud visual · Jaén, Cajamarca</text>
+
+  <!-- Separador horizontal -->
+  <rect x="270" y="422" width="560" height="1.5" fill="url(#grad)" opacity="0.3"/>
+
+  <!-- Info doctor -->
+  <circle cx="287" cy="455" r="18" fill="url(#gradV)" opacity="0.2"/>
+  <circle cx="287" cy="455" r="18" fill="none" stroke="url(#grad)" stroke-width="1.5" opacity="0.5"/>
+  <text x="287" y="461" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#E83EF0" text-anchor="middle" font-weight="700">AM</text>
+  <text x="315" y="452" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)" font-weight="600">Dr. Alfredo Mendoza</text>
+  <text x="315" y="470" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.45)">Fundador · Médico Oftalmólogo</text>
+
+  <!-- Stats -->
+  <g transform="translate(270, 510)">
+    <text x="0"   y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">+15</text>
+    <text x="0"   y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">años</text>
+    <rect x="68" y="-18" width="1" height="38" fill="rgba(255,255,255,0.15)"/>
+    <text x="82"  y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">+5K</text>
+    <text x="82"  y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">pacientes</text>
+    <rect x="160" y="-18" width="1" height="38" fill="rgba(255,255,255,0.15)"/>
+    <text x="174" y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">4.9★</text>
+    <text x="174" y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">valoración</text>
+  </g>
+
+  <!-- Servicios (derecha) -->
+  <g transform="translate(870, 200)">
+    <rect x="0" y="0" width="260" height="230" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(232,62,240,0.2)" stroke-width="1"/>
+    <text x="20" y="32" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.5)" letter-spacing="1" font-weight="600">NUESTROS SERVICIOS</text>
+    <rect x="20" y="42" width="220" height="1" fill="rgba(232,62,240,0.2)"/>
+
+    <!-- Servicio items -->
+    <g transform="translate(20, 62)">
+      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
+      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Examen de la Vista</text>
+    </g>
+    <g transform="translate(20, 95)">
+      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
+      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Graduación de Lentes</text>
+    </g>
+    <g transform="translate(20, 128)">
+      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
+      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Salud Visual Infantil</text>
+    </g>
+    <g transform="translate(20, 161)">
+      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
+      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Lentes de Contacto</text>
+    </g>
+    <g transform="translate(20, 194)">
+      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
+      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Control de Presión Ocular</text>
+    </g>
+  </g>
+
+  <!-- URL dominio -->
+  <text x="${W - 40}" y="${H - 28}" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.3)" text-anchor="end" letter-spacing="0.5">www.opticasgma.com</text>
+
+  <!-- Línea inferior degradada -->
+  <rect x="0" y="${H - 4}" width="${W}" height="4" fill="url(#grad)"/>
+</svg>`;
+
+writeFileSync("scripts/og.svg", svg);
+
+await sharp(Buffer.from(svg))
+  .resize(W, H)
+  .png({ quality: 90 })
+  .toFile("public/og-cover.png");
+
+console.log("✓ public/og-cover.png generado (1200×630)");
