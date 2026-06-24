@@ -1,0 +1,33 @@
+﻿:root {
+  /* ── Palette ── */
+  --p: #e83ef0;
+  --p-rgb: 232, 62, 240;
+  --p-dark: #e83ef0;
+  /* --p-dark: #c537cc; ORIGINALORIGINALORIGINALORIGINALORIGINALORIGINAL*/
+  --p-light: #d491d0;
+  --secondary: #cd6fa1;
+  --secondary-rgb: 205, 111, 161;
+  --g: linear-gradient(135deg, #e83ef0 0%, #cd6fa1 100%);
+  --accent-soft: #e9c9e7;
+
+  /* ── Neutrals ── */
+  --head: #321a31;
+  --body: #5c3d5a;
+  --bg: #f9f8f9;
+  --br: #e8e3e8;
+  --cs: 0 2px 20px rgba(50, 26, 49, 0.07);
+
+  /* ── Dark surface (MobileDrawer) ── */
+  --dark-bg: #1a0a19;
+  --dark-accent: #2ecc71;
+
+  /* ── Typography ── */
+  --hf: "Host Grotesk", sans-serif;
+  --sf: "DM Sans", system-ui, sans-serif;
+
+  /* ── Easing (Apple-style) ── */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease: var(--ease-in-out);
+}

@@ -1,0 +1,21 @@
+.inp {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--br);
+  border-radius: 8px;
+  font-family: var(--sf);
+  font-size: 14px;
+  color: var(--head);
+  outline: none;
+  background: #F8FAFC;
+  transition:
+    border-color 200ms var(--ease-in-out),
+    box-shadow   200ms var(--ease-in-out),
+    background   200ms var(--ease-in-out);
+}
+.inp:focus {
+  border-color: var(--p);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(var(--p-rgb), .08);
+}
+.inp::placeholder { color: #A0ADB8; }

@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@400;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
+/* ── Reset ── */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sf);
+  background: #fff;
+  color: var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img { display: block; max-width: 100%; object-fit: cover; }
+section, footer { overflow-x: hidden; }
+
+/* ── Typography ── */
+h1, h2, h3, h4, h5 {
+  font-family: var(--hf);
+  color: var(--head);
+  letter-spacing: -.025em;
+  line-height: 1.15;
+}
+h1 { font-size: clamp(30px, 4.6vw, 58px); font-weight: 700; }
+h2 { font-size: clamp(22px, 4vw, 44px);   font-weight: 700; }
+h4 { font-size: clamp(16px, 2.5vw, 22px); font-weight: 700; }
+h5 { font-size: 15px; font-weight: 700; }
+
+/* ── Utilities ── */
+.gt {
+  background: var(--g);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.lbl {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--p);
+  margin-bottom: 12px;
+}
+.lbl::before { content: '—'; }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  border: 1px solid var(--br);
+  border-radius: 30px;
+  padding: 7px 16px 7px 9px;
+  box-shadow: 0 2px 12px rgba(13, 27, 42, .07);
+  margin-bottom: 22px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--head);
+}
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--g);
+  flex-shrink: 0;
+}
+
+/* ── Reveal on scroll ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity   600ms var(--ease-out),
+    transform 600ms var(--ease-out);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Timeline direction-aware reveals ── */
+.tl-reveal-l {
+  opacity: 0;
+  transform: translateX(-5px);
+  transition:
+    opacity   480ms var(--ease-in-out),
+    transform 480ms var(--ease-in-out);
+}
+.tl-reveal-r {
+  opacity: 0;
+  transform: translateX(5px);
+  transition:
+    opacity   480ms var(--ease-in-out),
+    transform 480ms var(--ease-in-out);
+}
+.tl-reveal-l.on {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity   720ms var(--ease-out),
+    transform 720ms var(--ease-out);
+}
+.tl-reveal-r.on {
+  opacity: 1;
+  transform: translateX(0);
+  transition:
+    opacity   720ms var(--ease-out),
+    transform 720ms var(--ease-out);
+}
+
+/* Dot */
+.tl-dot-reveal {
+  opacity: 0;
+  transform: scale(0.35);
+}
+.tl-dot-reveal.on {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Scroll-animation classes (hero) ── */
+.s1 { animation: slideUp .6s var(--ease-in-out) both .05s; }
+.s2 { animation: slideUp .6s var(--ease-in-out) both .15s; }
+.s3 { animation: slideUp .6s var(--ease-in-out) both .28s; }
+.s4 { animation: slideUp .6s var(--ease-in-out) both .4s;  }
+.s5 { animation: fadeIn  .7s var(--ease-in-out) both .55s; }
+.float      { animation: floatY 4s   ease-in-out infinite; }
+.float-slow { animation: floatY 5.5s ease-in-out infinite; }
+
+/* ── Keyframes ── */
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalUp {
+  from { opacity: 0; transform: translateY(24px) scale(.98); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);   }
+}
+@keyframes popIn {
+  from { transform: scale(.5); opacity: 0; }
+  to   { transform: scale(1);  opacity: 1; }
+}
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes drawerIn {
+  from { transform: translateX(-100%); opacity: .4; }
+  to   { transform: translateX(0);     opacity: 1;  }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1;  transform: scale(1);   }
+  50%       { opacity: .5; transform: scale(.7); }
+}
+
+/* ── Hero móvil — altura estable sin resize en scroll ── */
+.hero-mob-h {
+  height: 100vh;    /* fallback navegadores antiguos */
+  height: 100svh;   /* small viewport height: no cambia al ocultar el browser chrome */
+}
+
+/* ── Responsive typography ── */
+@media (max-width: 768px) {
+  body { padding-bottom: 64px; }
+}
+@media (max-width: 480px) {
+  h1 { font-size: clamp(26px, 8vw, 34px); }
+  h2 { font-size: clamp(20px, 6vw, 28px); }
+}
+
+/* ── Secciones fuera de pantalla: omite pintura hasta que sean visibles ── */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 400px;
+}
+
+/* ── Respeta preferencia de movimiento reducido ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal, .tl-reveal-l, .tl-reveal-r {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .tl-dot-reveal {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+  }
+  .float, .float-slow { animation: none !important; }
+}

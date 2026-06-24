@@ -1,0 +1,118 @@
+/* ── Generic card ── */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--br);
+  box-shadow: var(--cs);
+  transition:
+    box-shadow 350ms var(--ease-in-out),
+    transform  350ms var(--ease-in-out);
+}
+.card:hover {
+  box-shadow: 0 14px 36px rgba(13, 27, 42, .1);
+  transform: translateY(-3px);
+}
+
+/* ── Service card ── */
+.svc-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(50, 26, 49, .18);
+  transition:
+    box-shadow 380ms var(--ease-in-out),
+    transform  380ms var(--ease-in-out);
+}
+.svc-card:hover {
+  box-shadow: 0 20px 52px rgba(13, 27, 42, .30);
+  transform: translateY(-5px);
+}
+.svc-card-cover {
+  position: absolute;
+  inset: 0;
+}
+.svc-card-cover img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 580ms var(--ease-in-out);
+}
+.svc-card:hover .svc-card-cover img { transform: scale(1.07); }
+
+/* ── Page & panel transitions ── */
+@keyframes pageIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes svcFade {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.svc-page { animation: pageIn 420ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.svc-detail-panel { animation: svcFade 320ms cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* ── Service detail page ── */
+
+.svc-sidebar-item {
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sf);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--head);
+  transition:
+    background 150ms var(--ease-in-out),
+    color      150ms var(--ease-in-out);
+  border: none;
+  background: none;
+  text-align: left;
+  width: 100%;
+  display: block;
+}
+.svc-sidebar-item:hover  { background: var(--bg); }
+.svc-sidebar-item.active { background: var(--p); color: #fff; }
+
+.svc-related-card > div {
+  transition: transform 280ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.svc-related-card:hover > div {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(50, 26, 49, .2);
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.benefit-check {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: var(--g);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 10px rgba(var(--p-rgb), .22);
+}
+
+
+/* ── Footer newsletter animations ─────────────────────────────────────────── */
+@keyframes ftNlIn {
+  from { opacity: 0; transform: translateY(10px) scale(.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);   }
+}
+@keyframes ftNlPop {
+  from { opacity: 0; transform: scale(0) rotate(-20deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg);   }
+}
+@keyframes ftNlCheck {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes ftNlSpin {
+  to { transform: rotate(360deg); }
+}
+@keyframes ftNlErrIn {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}

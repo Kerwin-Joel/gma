@@ -1,0 +1,73 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 800;
+  background: rgba(13, 27, 42, .55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  animation: fadeIn 250ms var(--ease-out);
+}
+.modal {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 32px 80px rgba(13, 27, 42, .22);
+  animation: modalUp 350ms var(--ease-out);
+}
+.modal-head {
+  padding: 28px 28px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.modal-body { padding: 20px 28px 28px; }
+
+.modal-close {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--br);
+  background: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background     150ms var(--ease-in-out),
+    border-color   150ms var(--ease-in-out);
+}
+.modal-close:hover { background: var(--bg); }
+
+.step-dots { display: flex; gap: 6px; margin-bottom: 20px; }
+.step-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--br);
+  transition:
+    background 300ms var(--ease-in-out),
+    width      300ms var(--ease-in-out);
+}
+.step-dot.active {
+  background: var(--p);
+  width: 20px;
+  border-radius: 3px;
+}
+
+.success-circle {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(var(--p-rgb), .1), rgba(255, 107, 91, .1));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px;
+  animation: popIn 500ms var(--ease-spring);
+}
+
+@media (max-width: 768px) {
+  .modal { border-radius: 16px; }
+  .modal-head, .modal-body { padding-left: 20px; padding-right: 20px; }
+}
