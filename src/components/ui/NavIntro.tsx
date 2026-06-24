@@ -243,15 +243,12 @@ export function NavIntro({ onComplete }: Props) {
 
           {/* Puntas de lápiz con animateMotion */}
           <circle ref={nibTopRef} r="1.4" fill="white" filter="url(#ni-tip)" style={{ opacity: 0 }}>
-            {/* @ts-expect-error — path es atributo SMIL válido no tipado en React */}
             <animateMotion ref={topAnimRef as never} dur="0.30s" begin="indefinite" fill="freeze" path={TOP}/>
           </circle>
           <circle ref={nibBotRef} r="1.4" fill="white" filter="url(#ni-tip)" style={{ opacity: 0 }}>
-            {/* @ts-expect-error */}
             <animateMotion ref={botAnimRef as never} dur="0.26s" begin="indefinite" fill="freeze" path={BOT}/>
           </circle>
           <circle ref={nibIrisRef} r="1.2" fill="white" filter="url(#ni-tip)" style={{ opacity: 0 }}>
-            {/* @ts-expect-error */}
             <animateMotion ref={irisAnimRef as never} dur="0.17s" begin="indefinite" fill="freeze" path={IRIS}/>
           </circle>
         </svg>

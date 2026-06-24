@@ -8,12 +8,10 @@ import { Nav } from "../components/layout/Nav";
 import { MobileDrawer } from "../components/layout/MobileDrawer";
 import { BookingModal } from "../components/ui/BookingModal";
 import { WAIcon } from "../components/ui/WAIcon";
-import { useMobile } from "../hooks/useMobile";
 
 export function ServicePage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const mob = useMobile(768);
   const [booking, setBk] = useState(false);
   const [scrolled, setSc] = useState(false);
   const [menu, setM] = useState(false);

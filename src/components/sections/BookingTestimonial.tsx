@@ -4,11 +4,7 @@ import { BookingModal } from "../ui/BookingModal";
 import { PRIMARY, GRADIENT, IMG } from "../../constants/theme";
 import { useMobile } from "../../hooks/useMobile";
 
-interface BookingTestimonialProps {
-  onBooking: () => void;
-}
-
-export function BookingTestimonial({ onBooking }: BookingTestimonialProps) {
+export function BookingTestimonial() {
   const mob = useMobile(768);
   const tab = useMobile(1024);
 

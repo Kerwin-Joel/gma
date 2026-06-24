@@ -26,7 +26,7 @@ export function Nav({
   const [glassVisible, setGlass] = useState(false);
   const [svcOpen, setSvcOpen] = useState(false);
   const svcRef = useRef<HTMLDivElement>(null);
-  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const goHome = () => {
     if (window.location.pathname === "/") {

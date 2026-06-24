@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { PageSEO } from "../components/seo/PageSEO";
 import { faqSchema } from "../seo/schemas";
 import { Nav } from "../components/layout/Nav";
@@ -14,12 +14,7 @@ import { About } from "../components/sections/About";
 import { BookingTestimonial } from "../components/sections/BookingTestimonial";
 import { Blog } from "../components/sections/Blog";
 import { NavIntro } from "../components/ui/NavIntro";
-import { useMobile } from "../hooks/useMobile";
-import type { Service } from "../types";
-
 export function Home() {
-  const mob = useMobile(768);
-  const navigate = useNavigate();
   const location = useLocation();
   const [prog, setP] = useState(0);
   const [menu, setM] = useState(false);
@@ -51,7 +46,6 @@ export function Home() {
     return () => clearTimeout(t);
   }, [location.state]);
 
-  const goToService = (svc: Service) => navigate(`/servicio/${svc.id}`);
 
   return (
     <>
@@ -79,7 +73,7 @@ export function Home() {
       <div id="servicios"><Services /></div>
       <Process onBooking={() => setBk(true)} />
       <About />
-      <BookingTestimonial onBooking={() => setBk(true)} />
+      <BookingTestimonial />
       <div id="blog"><Blog /></div>
       <div id="contacto" />
 

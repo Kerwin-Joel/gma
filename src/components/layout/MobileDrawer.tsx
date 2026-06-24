@@ -29,7 +29,7 @@ export function MobileDrawer({ open, onClose, onBooking }: MobileDrawerProps) {
   const panelRef = useRef<HTMLDivElement>(null);
   const bdropRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef(0);
-  const tidRef = useRef<ReturnType<typeof setTimeout>>();
+  const tidRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   const handleNav = (sectionId?: string) => {
     onClose();

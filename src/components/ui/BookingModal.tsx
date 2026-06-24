@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import type { ReactNode } from "react";
+import type { ReactNode, FC } from "react";
 import {
   X,
   ArrowLeft,
@@ -123,7 +123,7 @@ function isSlotTaken(slotIdx: number, dayNum: number, avail: Avail): boolean {
 
 // ── Referral options with icons ───────────────────────────────────────────────
 
-type IconComp = (props: { size?: number }) => JSX.Element;
+type IconComp = FC<{ size?: number }>;
 
 const REFS: Array<{ label: string; Icon: IconComp }> = [
   { label: "Google",        Icon: GIcon },
