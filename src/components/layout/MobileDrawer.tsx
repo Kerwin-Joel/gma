@@ -17,7 +17,7 @@ interface MobileDrawerProps {
 const LINKS = [
   { label: "Inicio",    sub: "Página principal",       icon: <Home size={18} />,     sectionId: "inicio" },
   { label: "Servicios", sub: "Exámenes y tratamientos", icon: <Eye size={18} />,      hasSubmenu: true },
-  { label: "Nosotros",  sub: "Quiénes somos",           icon: <Users size={18} />,    sectionId: "nosotros" },
+  { label: "Nosotros",  sub: "Quiénes somos",           icon: <Users size={18} />,    route: "/nosotros" },
   { label: "Blog",      sub: "Artículos y consejos",    icon: <BookOpen size={18} />, sectionId: "blog" },
   { label: "Contacto",  sub: "Ubicación y horarios",    icon: <MapPin size={18} />,   sectionId: "contacto" },
 ];
@@ -113,12 +113,13 @@ export function MobileDrawer({ open, onClose, onBooking }: MobileDrawerProps) {
 
         {/* Nav links */}
         <nav className="sig-links">
-          {LINKS.map(({ label, sub, icon, sectionId, hasSubmenu }, i) => (
+          {LINKS.map(({ label, sub, icon, sectionId, hasSubmenu, route }, i) => (
             <div key={label}>
               <button
                 className={`sig-link sig-link--${i}`}
                 onClick={() => {
                   if (hasSubmenu) setOpenSub((v) => !v);
+                  else if (route) { onClose(); navigate(route); }
                   else handleNav(sectionId);
                 }}
               >
