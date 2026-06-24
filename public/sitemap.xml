@@ -4,7 +4,7 @@
 
   <!-- Inicio -->
   <url>
-    <loc>https://opticasgma.pe/</loc>
+    <loc>https://www.opticasgma.com/</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -12,7 +12,7 @@
 
   <!-- Nosotros -->
   <url>
-    <loc>https://opticasgma.pe/nosotros</loc>
+    <loc>https://www.opticasgma.com/nosotros</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -20,37 +20,37 @@
 
   <!-- Servicios -->
   <url>
-    <loc>https://opticasgma.pe/servicio/examen</loc>
+    <loc>https://www.opticasgma.com/servicio/examen</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/servicio/lentes</loc>
+    <loc>https://www.opticasgma.com/servicio/lentes</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/servicio/infantil</loc>
+    <loc>https://www.opticasgma.com/servicio/infantil</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/servicio/contacto</loc>
+    <loc>https://www.opticasgma.com/servicio/contacto</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/servicio/presion</loc>
+    <loc>https://www.opticasgma.com/servicio/presion</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/servicio/gafas</loc>
+    <loc>https://www.opticasgma.com/servicio/gafas</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
@@ -58,37 +58,37 @@
 
   <!-- Blog -->
   <url>
-    <loc>https://opticasgma.pe/blog</loc>
+    <loc>https://www.opticasgma.com/blog</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/blog/miopia-ninos-como-detectarla-a-tiempo</loc>
+    <loc>https://www.opticasgma.com/blog/miopia-ninos-como-detectarla-a-tiempo</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/blog/lentes-progresivos-guia-completa</loc>
+    <loc>https://www.opticasgma.com/blog/lentes-progresivos-guia-completa</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/blog/glaucoma-el-ladron-silencioso-de-la-vision</loc>
+    <loc>https://www.opticasgma.com/blog/glaucoma-el-ladron-silencioso-de-la-vision</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/blog/luz-azul-y-tus-ojos</loc>
+    <loc>https://www.opticasgma.com/blog/luz-azul-y-tus-ojos</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://opticasgma.pe/blog/cuidado-ocular-adultos-mayores</loc>
+    <loc>https://www.opticasgma.com/blog/cuidado-ocular-adultos-mayores</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -96,7 +96,7 @@
 
   <!-- Testimonios -->
   <url>
-    <loc>https://opticasgma.pe/testimonios</loc>
+    <loc>https://www.opticasgma.com/testimonios</loc>
     <lastmod>2025-01-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
