@@ -70,7 +70,7 @@ const TIMELINE = [
   {
     year: "2009",
     title: "Inicio de la vocación",
-    desc: "El Dr. Mendoza culmina su carrera de Medicina en la UNC con mención en salud sensorial, desarrollando una pasión profunda por la oftalmología.",
+    desc: "El Dr. Santamaría culmina su carrera de Medicina en la UNC con mención en salud sensorial, desarrollando una pasión profunda por la oftalmología.",
   },
   {
     year: "2012",
@@ -286,17 +286,17 @@ export function AboutPage() {
       <MobileDrawer open={menu} onClose={() => setM(false)} onBooking={() => setBk(true)} />
 
       <PageSEO
-        title="Nosotros — Dr. Alfredo Mendoza | Ópticas GMA"
-        description="Conoce al Dr. Alfredo Mendoza, fundador de Ópticas GMA. Más de 15 años de experiencia en oftalmología y optometría clínica en Jaén, Cajamarca."
+        title="Nosotros — Dr. Antonio Santamaría | Ópticas GMA"
+        description="Conoce al Dr. Antonio Santamaría, fundador de Ópticas GMA. Más de 15 años de experiencia en oftalmología y optometría clínica en Jaén, Cajamarca."
         path="/nosotros"
         type="profile"
-        keywords="Dr. Alfredo Mendoza, oftalmólogo Jaén, Ópticas GMA nosotros, especialista visual Cajamarca"
+        keywords="Dr. Antonio Santamaría, oftalmólogo Jaén, Ópticas GMA nosotros, especialista visual Cajamarca"
         jsonLd={[
           breadcrumbSchema([{ name: "Inicio", path: "/" }, { name: "Nosotros", path: "/nosotros" }]),
           {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Dr. Alfredo Mendoza",
+            "name": "Dr. Antonio Santamaría",
             "jobTitle": "Médico Oftalmólogo y Fundador",
             "description": "Especialista en oftalmología con más de 15 años de experiencia. Fundador y director de Ópticas GMA en Jaén, Cajamarca.",
             "worksFor": { "@type": "MedicalBusiness", "name": "Ópticas GMA", "url": "https://opticasgma.pe" },
@@ -406,10 +406,10 @@ export function AboutPage() {
                   >
                     <img
                       src={DOCTOR_IMG}
-                      alt="Dr. Mendoza – Director de Ópticas GMA"
+                      alt="Dr. Santamaría – Director de Ópticas GMA"
                       loading="lazy"
                       decoding="async"
-                      style={{ width: "100%", height: mob ? 300 : 480, objectFit: "cover", display: "block" }}
+                      style={{ width: "100%", height: mob ? 300 : 480, objectFit: "cover", objectPosition: "center top", display: "block" }}
                     />
                   </div>
                   {/* Badge flotante */}
@@ -442,13 +442,13 @@ export function AboutPage() {
               <Reveal delay={160}>
                 <SectionLabel>El especialista</SectionLabel>
                 <h2 style={{ fontFamily: "var(--hf)", fontSize: mob ? 26 : 36, fontWeight: 800, lineHeight: 1.2, marginBottom: 6 }}>
-                  Dr. Alfredo Mendoza
+                  Dr. Antonio Santamaría
                 </h2>
                 <div style={{ fontSize: 13, color: P, fontWeight: 600, marginBottom: 20, display: "flex", alignItems: "center", gap: 6 }}>
                   <Award size={13} /> Médico Oftalmólogo · CMP Colegiado
                 </div>
                 <p style={{ fontSize: mob ? 14 : 15, color: "var(--body)", lineHeight: 1.9, marginBottom: 16 }}>
-                  El Dr. Alfredo Mendoza dedicó su vida a la salud visual desde que, siendo estudiante de medicina, comprendió que la vista es el sentido que más define nuestra calidad de vida. Nacido en Cajamarca, decidió quedarse en la región para servir a su gente.
+                  El Dr. Antonio Santamaría dedicó su vida a la salud visual desde que, siendo estudiante de optometría, comprendió que la vista es el sentido que más define nuestra calidad de vida. Nacido en Cajamarca, decidió quedarse en la región para servir a su gente.
                 </p>
                 <p style={{ fontSize: mob ? 14 : 15, color: "var(--body)", lineHeight: 1.9, marginBottom: 28 }}>
                   Fundó Ópticas GMA con una convicción clara: que cada persona de Jaén merece atención ocular de nivel hospitalario, con un trato cercano y sin complicaciones. Hoy lidera un equipo de especialistas comprometidos con ese mismo propósito.
@@ -720,11 +720,11 @@ export function AboutPage() {
                       flexShrink: 0,
                     }}
                   >
-                    AM
+                    AS
                   </div>
                   <div>
                     <div style={{ fontSize: 15, fontWeight: 700, color: "var(--head)", marginBottom: 2 }}>
-                      Dr. Alfredo Mendoza
+                      Dr. Antonio Santamaría
                     </div>
                     <div style={{ fontSize: 12, color: "var(--body)" }}>Médico Oftalmólogo · Fundador GMA</div>
                     <div
@@ -765,7 +765,7 @@ export function AboutPage() {
                     "Tu visión merece atención de primer nivel, cerca de casa."
                   </p>
                   <div style={{ fontSize: 11.5, color: "var(--body)" }}>
-                    — Dr. Mendoza, Fundador de GMA Ópticas
+                    — Dr. Santamaría, Fundador de GMA Ópticas
                   </div>
                 </div>
 

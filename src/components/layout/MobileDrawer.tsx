@@ -18,7 +18,7 @@ const LINKS = [
   { label: "Inicio",    sub: "Página principal",       icon: <Home size={18} />,     sectionId: "inicio" },
   { label: "Servicios", sub: "Exámenes y tratamientos", icon: <Eye size={18} />,      hasSubmenu: true },
   { label: "Nosotros",  sub: "Quiénes somos",           icon: <Users size={18} />,    route: "/nosotros" },
-  { label: "Blog",      sub: "Artículos y consejos",    icon: <BookOpen size={18} />, sectionId: "blog" },
+  { label: "Blog",      sub: "Artículos y consejos",    icon: <BookOpen size={18} />, route: "/blog" },
   { label: "Contacto",  sub: "Ubicación y horarios",    icon: <MapPin size={18} />,   sectionId: "contacto" },
 ];
 

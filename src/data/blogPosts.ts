@@ -40,9 +40,9 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: 5,
     publishedAt: "2024-11-12",
     featured: true,
-    author: { name: "Dr. Carlos Mendoza", role: "Optometrista", initials: "CM" },
+    author: { name: "Dr. Antonio Santamaría", role: "Optometrista", initials: "AS" },
     coverImage:
-      "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1200&q=80",
+      "https://yuxpvwinvcewxhfzubov.supabase.co/storage/v1/object/public/gma-photos/kev00870.jpg",
     tags: ["examen de vista", "salud ocular", "prevención"],
     relatedSlugs: ["miopia-ninos-senales", "glaucoma-ladron-silencioso"],
     content: [
@@ -138,7 +138,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "optica",
     readTime: 7,
     publishedAt: "2024-10-10",
-    author: { name: "Dr. Carlos Mendoza", role: "Optometrista", initials: "CM" },
+    author: { name: "Dr. Antonio Santamaría", role: "Optometrista", initials: "AS" },
     coverImage:
       "https://images.unsplash.com/photo-1574258495973-f010dfbb5371?auto=format&fit=crop&w=1200&q=80",
     tags: ["lentes progresivos", "bifocales", "presbicia", "graduación"],
@@ -188,7 +188,7 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "2024-09-20",
     author: { name: "Dra. Ana Quispe", role: "Optometrista Pediátrica", initials: "AQ" },
     coverImage:
-      "https://images.unsplash.com/photo-1583394293544-a41a9f2c9c6b?auto=format&fit=crop&w=1200&q=80",
+      "https://yuxpvwinvcewxhfzubov.supabase.co/storage/v1/object/public/gma-photos/kev00940.jpg",
     tags: ["glaucoma", "presión ocular", "prevención", "tonometría"],
     relatedSlugs: ["frecuencia-examen-de-la-vista", "primera-consulta-oftalmologica"],
     content: [
@@ -234,9 +234,9 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "contactologia",
     readTime: 7,
     publishedAt: "2024-09-05",
-    author: { name: "Dr. Carlos Mendoza", role: "Optometrista", initials: "CM" },
+    author: { name: "Dr. Antonio Santamaría", role: "Optometrista", initials: "AS" },
     coverImage:
-      "https://images.unsplash.com/photo-1614735241165-6756e1df61ab?auto=format&fit=crop&w=1200&q=80",
+      "https://plus.unsplash.com/premium_photo-1667520064784-1ad031e45a4f?w=1200&auto=format&fit=crop&q=80",
     tags: ["lentes de contacto", "contactología", "ojo seco", "miopía"],
     relatedSlugs: ["lentes-progresivos-vs-bifocales", "sindrome-visual-informatico"],
     content: [
@@ -283,7 +283,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "salud-visual",
     readTime: 5,
     publishedAt: "2024-08-18",
-    author: { name: "Dr. Carlos Mendoza", role: "Optometrista", initials: "CM" },
+    author: { name: "Dr. Antonio Santamaría", role: "Optometrista", initials: "AS" },
     coverImage:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
     tags: ["pantallas", "fatiga ocular", "ojo seco", "trabajo digital"],
@@ -378,7 +378,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: "medicina-ocular",
     readTime: 5,
     publishedAt: "2024-07-08",
-    author: { name: "Dr. Carlos Mendoza", role: "Optometrista", initials: "CM" },
+    author: { name: "Dr. Antonio Santamaría", role: "Optometrista", initials: "AS" },
     coverImage:
       "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1200&q=80",
     tags: ["oftalmología", "consulta médica", "examen ocular", "primera visita"],

@@ -94,7 +94,7 @@ export function Process({ onBooking }: ProcessProps) {
         <Img
           src={IMG.process}
           alt="Proceso"
-          style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "70% center" }}
         />
         <div
           style={{

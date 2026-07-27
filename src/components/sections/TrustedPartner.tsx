@@ -40,9 +40,9 @@ export function TrustedPartner({ onBooking }: TrustedPartnerProps) {
 
         <Reveal style={{ flex: mob || tab ? "none" : "1 1 56%", width: "100%" }}>
           <SectionLabel>Nosotros</SectionLabel>
-          <h2 style={{ marginBottom: 16 }}>Tu Socio de Confianza<br />en Salud Visual</h2>
+          <h2 style={{ marginBottom: 16 }}>Equipo Profesional y<br />Especializado en Salud Ocular</h2>
           <p style={{ fontSize: mob ? 14 : 15, color: "var(--body)", lineHeight: 1.85, marginBottom: 28, maxWidth: 440 }}>
-            Desde exámenes de rutina hasta tratamientos especializados, estamos aquí para cuidar tu visión en cada etapa de tu vida.
+            Desde Refracción Visual, venta de lentes oftálmicos, lentes de sol, lentes de contacto, consultas, terapias, tratamientos oftalmológicos y todo lo que refiere a la Salud Visual. El paciente es muy importante para nosotros, por ello brindamos un seguimiento muy adecuado después de su compra o visita a nuestro consultorio.
           </p>
           <div ref={statRef} style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", borderTop: "1px solid var(--br)", borderBottom: "1px solid var(--br)", padding: "20px 0" }}>
             {[

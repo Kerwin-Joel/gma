@@ -76,7 +76,7 @@ export function PageSEO({
         <meta property="article:modified_time" content={modifiedAt} />
       )}
       {type === "article" && (
-        <meta property="article:author" content="Dr. Alfredo Mendoza" />
+        <meta property="article:author" content="Dr. Antonio Santamaría" />
       )}
       {type === "article" && (
         <meta property="article:publisher" content="https://www.facebook.com/GMAOptica" />

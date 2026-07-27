@@ -168,6 +168,38 @@ export const SERVICE_META: Record<string, ServiceMeta> = {
     related: ["oftalmologia", "examen"],
   },
 
+  tomografia: {
+    category: "Diagnóstico Avanzado",
+    pills: ["Sin contacto con el ojo", "Resultado inmediato", "Alta tecnología OCT"],
+    steps: [
+      "Anamnesis: síntomas visuales y antecedentes del paciente",
+      "Posicionamiento frente al equipo Topcon OCT-1 Maestro2",
+      "Captura de imágenes tridimensionales de retina y nervio óptico",
+      "Análisis e informe detallado por el especialista",
+    ],
+    forWho: [
+      "Personas con diagnóstico de glaucoma o sospecha de la enfermedad",
+      "Pacientes con diabetes (control de retinopatía diabética)",
+      "Personas con degeneración macular o antecedentes familiares",
+      "Post-operados de retina que requieren seguimiento preciso",
+    ],
+    faqs: [
+      {
+        q: "¿La tomografía ocular es dolorosa?",
+        a: "No, es completamente indolora y sin contacto con el ojo. Solo debes mantenerlo abierto y fijar la mirada en un punto de luz durante unos segundos.",
+      },
+      {
+        q: "¿Qué diferencia hay entre una tomografía y un examen de vista normal?",
+        a: "El examen de vista mide agudeza visual y graduación. La tomografía OCT obtiene imágenes de alta resolución de las capas internas de la retina y el nervio óptico, permitiendo detectar enfermedades que no son visibles en un examen convencional.",
+      },
+      {
+        q: "¿Con qué frecuencia debo realizarme una tomografía ocular?",
+        a: "Depende del diagnóstico. Para control de glaucoma o degeneración macular, generalmente cada 6 a 12 meses. Tu especialista te indicará la frecuencia según tu caso.",
+      },
+    ],
+    related: ["presion", "oftalmologia"],
+  },
+
   contacto: {
     category: "Contactología",
     pills: ["Primera prueba sin costo", "Lentes para casos especiales", "Adaptación garantizada"],

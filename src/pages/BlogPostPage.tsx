@@ -66,7 +66,7 @@ export function BlogPostPage() {
         imageAlt={post.title}
         type="article"
         publishedAt={post.publishedAt}
-        keywords={`${post.category}, salud visual, ópticas Jaén, Dr. Alfredo Mendoza`}
+        keywords={`${post.category}, salud visual, ópticas Jaén, Dr. Antonio Santamaría`}
         jsonLd={[
           articleSchema({ title: post.title, excerpt: post.excerpt, slug: post.slug, publishedAt: post.publishedAt, coverImage: post.coverImage, author: post.author, category: post.category }),
           breadcrumbSchema([{ name: "Inicio", path: "/" }, { name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }])

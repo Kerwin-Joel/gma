@@ -9,6 +9,7 @@ import {
   Check,
   ScanEye,
   Glasses,
+  Scan,
 } from "lucide-react";
 import type { Service, ProcessStep } from "../types";
 import { IMG } from "../constants/theme";
@@ -82,6 +83,20 @@ export const SVCS: Service[] = [
       "Resultado inmediato",
       "Incluido en el examen de vista",
       "Seguimiento cada 6 o 12 meses",
+    ],
+  },
+  {
+    id: "tomografia",
+    Icon: Scan,
+    img: IMG.doctor,
+    n: "Tomografías Oculares",
+    d: "Imágenes de alta resolución de retina y nervio óptico con tecnología OCT.",
+    full: "La Tomografía de Coherencia Óptica (OCT) obtiene imágenes tridimensionales de las capas de la retina, el nervio óptico y el segmento anterior del ojo. Es fundamental para detectar y monitorear glaucoma, degeneración macular, retinopatía diabética y otras patologías con la máxima precisión. Contamos con el equipo Topcon OCT-1 Maestro2 de última generación.",
+    benefits: [
+      "Imágenes de alta resolución sin contacto con el ojo",
+      "Detección temprana de glaucoma y degeneración macular",
+      "Monitoreo de retinopatía diabética",
+      "Resultado inmediato con informe detallado",
     ],
   },
   {
