@@ -13,6 +13,7 @@ import { Process } from "../components/sections/Process";
 import { About } from "../components/sections/About";
 import { BookingTestimonial } from "../components/sections/BookingTestimonial";
 import { Blog } from "../components/sections/Blog";
+import { Store } from "../components/sections/Store";
 import { NavIntro } from "../components/ui/NavIntro";
 export function Home() {
   const location = useLocation();
@@ -74,6 +75,7 @@ export function Home() {
       <Process onBooking={() => setBk(true)} />
       <About />
       <BookingTestimonial />
+      <div id="tienda"><Store /></div>
       <div id="blog"><Blog /></div>
       <div id="contacto" />
 
