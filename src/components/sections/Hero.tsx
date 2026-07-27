@@ -192,7 +192,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
   return (
     <section
       style={{
-        minHeight: tabPortrait ? "auto" : "100vh",
+        minHeight: "100vh",
         background:
           "linear-gradient(135deg,#FFF7FA 0%,#F7FAFD 50%,#F2F6FB 100%)",
         position: "relative",
@@ -231,11 +231,12 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
         style={{
           flex: 1,
           display: "flex",
-          alignItems: tabPortrait ? "flex-start" : "center",
+          alignItems: "center",
+          justifyContent: tabPortrait ? "center" : undefined,
           maxWidth: 1160,
           margin: "0 auto",
           width: "100%",
-          padding: tabPortrait ? "96px 32px 48px" : tab ? "110px 32px 48px" : "110px 64px 56px",
+          padding: tabPortrait ? "80px 32px 40px" : tab ? "110px 32px 48px" : "110px 64px 56px",
           gap: tabPortrait ? 0 : tab ? 40 : 48,
           flexDirection: tabPortrait ? "column" : "row",
           position: "relative",
