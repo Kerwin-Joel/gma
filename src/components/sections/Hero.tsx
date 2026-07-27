@@ -192,7 +192,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
   return (
     <section
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         background:
           "linear-gradient(135deg,#FFF7FA 0%,#F7FAFD 50%,#F2F6FB 100%)",
         position: "relative",
