@@ -1,8 +1,9 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1a0a19"/>
-      <stop offset="100%" stop-color="#2a0e2a"/>
+    <!-- Overlay ligero: solo oscurece un poco la foto para que el texto sea legible -->
+    <linearGradient id="overlay" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#181818" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#181818" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#B90FC2"/>
@@ -12,111 +13,57 @@
       <stop offset="0%" stop-color="#B90FC2"/>
       <stop offset="100%" stop-color="#E83EF0"/>
     </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="18" result="blur"/>
-      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
     <filter id="softglow">
       <feGaussianBlur stdDeviation="40" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
   </defs>
 
-  <!-- Fondo oscuro -->
-  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Overlay de gradiente sobre la foto -->
+  <rect width="1200" height="630" fill="url(#overlay)"/>
 
-  <!-- Círculos decorativos difusos -->
-  <circle cx="980" cy="120" r="220" fill="#B90FC2" opacity="0.12" filter="url(#softglow)"/>
-  <circle cx="200" cy="530" r="180" fill="#E83EF0" opacity="0.09" filter="url(#softglow)"/>
-  <circle cx="600" cy="320" r="300" fill="#9a0db0" opacity="0.06" filter="url(#softglow)"/>
+  <!-- Brillo sutil derecha -->
+  <circle cx="1100" cy="540" r="200" fill="#E83EF0" opacity="0.06" filter="url(#softglow)"/>
 
-  <!-- Línea superior degradada -->
-  <rect x="0" y="0" width="1200" height="5" fill="url(#grad)"/>
 
-  <!-- Ícono ojo (izquierda) -->
-  <g transform="translate(80, 240)">
-    <!-- Círculo exterior -->
-    <circle cx="75" cy="75" r="72" fill="none" stroke="url(#grad)" stroke-width="2.5" opacity="0.6"/>
-    <!-- Ojo SVG path simplificado -->
-    <g transform="translate(75,75)" fill="none" stroke="url(#grad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M-52 0 C-35 -30 35 -30 52 0 C35 30 -35 30 -52 0Z" opacity="0.9"/>
-      <circle cx="0" cy="0" r="18" fill="url(#gradV)" opacity="0.95"/>
-      <circle cx="0" cy="0" r="9" fill="#1a0a19"/>
-      <circle cx="5" cy="-5" r="3.5" fill="white" opacity="0.9"/>
-    </g>
-  </g>
+  <!-- Pill badge (derecha) -->
+  <rect x="588" y="128" width="230" height="32" rx="16" fill="url(#grad)" opacity="0.15"/>
+  <rect x="588" y="128" width="230" height="32" rx="16" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.4"/>
+  <circle cx="608" cy="144" r="5" fill="url(#gradV)"/>
+  <text x="624" y="149" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#E83EF0" font-weight="600" letter-spacing="1">SALUD VISUAL · PERÚ</text>
 
-  <!-- Separador vertical -->
-  <rect x="230" y="180" width="1.5" height="270" fill="url(#grad)" opacity="0.35"/>
-
-  <!-- Texto principal -->
-  <!-- Pill badge -->
-  <rect x="270" y="170" width="230" height="32" rx="16" fill="url(#grad)" opacity="0.15"/>
-  <rect x="270" y="170" width="230" height="32" rx="16" fill="none" stroke="url(#grad)" stroke-width="1" opacity="0.4"/>
-  <circle cx="290" cy="186" r="5" fill="url(#gradV)"/>
-  <text x="306" y="191" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="#E83EF0" font-weight="600" letter-spacing="1">SALUD VISUAL · PERÚ</text>
-
-  <!-- Nombre marca -->
-  <text x="270" y="268" font-family="'Helvetica Neue', Arial, sans-serif" font-size="74" font-weight="800" fill="white" letter-spacing="-2">Ópticas</text>
-  <text x="270" y="350" font-family="'Helvetica Neue', Arial, sans-serif" font-size="74" font-weight="800" fill="url(#grad)" letter-spacing="-2">GMA</text>
+  <!-- Ópticas -->
+  <text x="588" y="248" font-family="'Helvetica Neue', Arial, sans-serif" font-size="80" font-weight="800" fill="white" letter-spacing="-2">Ópticas</text>
+  <!-- GMA en magenta -->
+  <text x="588" y="336" font-family="'Helvetica Neue', Arial, sans-serif" font-size="80" font-weight="800" fill="url(#grad)" letter-spacing="-2">GMA</text>
 
   <!-- Tagline -->
-  <text x="270" y="400" font-family="'Helvetica Neue', Arial, sans-serif" font-size="22" fill="rgba(255,255,255,0.65)" letter-spacing="0.3">Especialistas en salud visual · Jaén, Cajamarca</text>
+  <text x="588" y="382" font-family="'Helvetica Neue', Arial, sans-serif" font-size="19" fill="rgba(255,255,255,0.55)" letter-spacing="0.2">Especialistas en salud visual · Jaén, Cajamarca</text>
 
-  <!-- Separador horizontal -->
-  <rect x="270" y="422" width="560" height="1.5" fill="url(#grad)" opacity="0.3"/>
+  <!-- Separador -->
+  <rect x="588" y="404" width="500" height="1.5" fill="url(#grad)" opacity="0.28"/>
 
-  <!-- Info doctor -->
-  <circle cx="287" cy="455" r="18" fill="url(#gradV)" opacity="0.2"/>
-  <circle cx="287" cy="455" r="18" fill="none" stroke="url(#grad)" stroke-width="1.5" opacity="0.5"/>
-  <text x="287" y="461" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#E83EF0" text-anchor="middle" font-weight="700">AS</text>
-  <text x="315" y="452" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)" font-weight="600">Dr. Antonio Santamaría</text>
-  <text x="315" y="470" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.45)">Director General · Optómetra</text>
+  <!-- Doctor: avatar -->
+  <circle cx="606" cy="438" r="19" fill="url(#gradV)" opacity="0.18"/>
+  <circle cx="606" cy="438" r="19" fill="none" stroke="url(#grad)" stroke-width="1.5" opacity="0.5"/>
+  <text x="606" y="444" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#E83EF0" text-anchor="middle" font-weight="700">AS</text>
+  <!-- Doctor: nombre y rol -->
+  <text x="636" y="433" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.88)" font-weight="600">Dr. Antonio Santamaría</text>
+  <text x="636" y="452" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.42)">Director General · Optómetra</text>
 
   <!-- Stats -->
-  <g transform="translate(270, 510)">
-    <text x="0"   y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">+15</text>
-    <text x="0"   y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">años</text>
-    <rect x="68" y="-18" width="1" height="38" fill="rgba(255,255,255,0.15)"/>
-    <text x="82"  y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">+5K</text>
-    <text x="82"  y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">pacientes</text>
-    <rect x="160" y="-18" width="1" height="38" fill="rgba(255,255,255,0.15)"/>
-    <text x="174" y="0" font-family="'Helvetica Neue', Arial, sans-serif" font-size="26" font-weight="800" fill="url(#grad)">4.9★</text>
-    <text x="174" y="18" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.5)">valoración</text>
+  <g transform="translate(588, 510)">
+    <text x="0"   y="0"  font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" fill="url(#grad)">+15</text>
+    <text x="0"   y="20" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">años</text>
+    <rect x="76"  y="-18" width="1" height="42" fill="rgba(255,255,255,0.14)"/>
+    <text x="90"  y="0"  font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" fill="url(#grad)">+5K</text>
+    <text x="90"  y="20" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">pacientes</text>
+    <rect x="178" y="-18" width="1" height="42" fill="rgba(255,255,255,0.14)"/>
+    <text x="192" y="0"  font-family="'Helvetica Neue', Arial, sans-serif" font-size="28" font-weight="800" fill="url(#grad)">4.9★</text>
+    <text x="192" y="20" font-family="'Helvetica Neue', Arial, sans-serif" font-size="12" fill="rgba(255,255,255,0.45)">valoración</text>
   </g>
 
-  <!-- Servicios (derecha) -->
-  <g transform="translate(870, 200)">
-    <rect x="0" y="0" width="260" height="230" rx="16" fill="rgba(255,255,255,0.04)" stroke="rgba(232,62,240,0.2)" stroke-width="1"/>
-    <text x="20" y="32" font-family="'Helvetica Neue', Arial, sans-serif" font-size="13" fill="rgba(255,255,255,0.5)" letter-spacing="1" font-weight="600">NUESTROS SERVICIOS</text>
-    <rect x="20" y="42" width="220" height="1" fill="rgba(232,62,240,0.2)"/>
+  <!-- URL -->
+  <text x="1148" y="604" font-family="'Helvetica Neue', Arial, sans-serif" font-size="14" fill="rgba(255,255,255,0.28)" text-anchor="end" letter-spacing="0.5">www.opticasgma.com</text>
 
-    <!-- Servicio items -->
-    <g transform="translate(20, 62)">
-      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
-      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Examen de la Vista</text>
-    </g>
-    <g transform="translate(20, 95)">
-      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
-      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Graduación de Lentes</text>
-    </g>
-    <g transform="translate(20, 128)">
-      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
-      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Salud Visual Infantil</text>
-    </g>
-    <g transform="translate(20, 161)">
-      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
-      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Lentes de Contacto</text>
-    </g>
-    <g transform="translate(20, 194)">
-      <circle cx="8" cy="8" r="4" fill="url(#gradV)"/>
-      <text x="22" y="13" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.85)">Control de Presión Ocular</text>
-    </g>
-  </g>
-
-  <!-- URL dominio -->
-  <text x="1160" y="602" font-family="'Helvetica Neue', Arial, sans-serif" font-size="15" fill="rgba(255,255,255,0.3)" text-anchor="end" letter-spacing="0.5">www.opticasgma.com</text>
-
-  <!-- Línea inferior degradada -->
-  <rect x="0" y="626" width="1200" height="4" fill="url(#grad)"/>
 </svg>
