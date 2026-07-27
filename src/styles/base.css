@@ -179,6 +179,11 @@ section {
   content-visibility: auto;
   contain-intrinsic-size: 0 400px;
 }
+/* Hero siempre visible — no necesita lazy render */
+#inicio section {
+  content-visibility: visible;
+  contain-intrinsic-size: none;
+}
 
 /* ── Respeta preferencia de movimiento reducido ── */
 @media (prefers-reduced-motion: reduce) {

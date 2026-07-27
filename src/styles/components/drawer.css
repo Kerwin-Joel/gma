@@ -12,13 +12,13 @@
     opacity: 0.85;
   }
   100% {
-    clip-path: circle(1100px at calc(100% - 22px) 22px);
+    clip-path: circle(1800px at calc(100% - 22px) 22px);
     opacity: 1;
   }
 }
 @keyframes sig-burst-out {
   0% {
-    clip-path: circle(1100px at calc(100% - 22px) 22px);
+    clip-path: circle(1800px at calc(100% - 22px) 22px);
     opacity: 1;
   }
   80% {
@@ -235,6 +235,19 @@
   flex-direction: column;
   padding: 4px 20px;
   justify-content: center;
+  min-height: 0;
+}
+
+/* ── Landscape / pantalla corta (tablet horizontal, etc.) ── */
+@media (max-height: 680px) {
+  .sig-head { padding-top: 12px; }
+  .sig-divider { margin: 8px 20px 4px; }
+  .sig-links { justify-content: flex-start; }
+  .sig-link { padding: 7px 0; }
+  .sig-link-text { font-size: 16px; }
+  .sig-link-icon { width: 34px; height: 34px; border-radius: 10px; }
+  .sig-bottom { padding-top: 10px; }
+  .sig-cta { padding: 10px 14px; }
 }
 .sig-link {
   display: flex;
