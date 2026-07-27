@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 
 const SITE_NAME = "Ópticas GMA";
-const BASE_URL  = "https://www.opticasgma.com";
+const BASE_URL  = "https://opticasgma.com";
 const DEFAULT_IMG = `${BASE_URL}/og-cover.jpg`;
 const TWITTER_HANDLE = "@opticasgma";
 
