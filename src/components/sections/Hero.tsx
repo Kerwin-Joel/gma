@@ -250,7 +250,9 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            marginBottom: tabPortrait ? 32 : 0,
+            alignItems: tabPortrait ? "center" : "flex-start",
+            textAlign: tabPortrait ? "center" : "left",
+            marginBottom: tabPortrait ? 40 : 0,
           }}
         >
           <Pill className="s1" style={{ marginBottom: 20 }}>
@@ -258,7 +260,12 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
           </Pill>
           <h1
             className="s2"
-            style={{ marginBottom: 18, lineHeight: 1.08, color: "var(--head)" }}
+            style={{
+              marginBottom: 18,
+              lineHeight: 1.08,
+              color: "var(--head)",
+              fontSize: tabPortrait ? "clamp(36px, 6vw, 52px)" : undefined,
+            }}
           >
             Tu visión, en manos
             <br />
@@ -267,11 +274,11 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
           <p
             className="s3"
             style={{
-              fontSize: tab ? 14.5 : 16,
+              fontSize: tabPortrait ? 16 : tab ? 14.5 : 16,
               color: "var(--body)",
               lineHeight: 1.85,
               marginBottom: 32,
-              maxWidth: 420,
+              maxWidth: tabPortrait ? 560 : 420,
             }}
           >
             Más de 14 años cuidando la salud visual de las familias del norte
@@ -284,6 +291,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 36,
+              justifyContent: tabPortrait ? "center" : "flex-start",
             }}
           >
             <button className="btn" onClick={onBooking}>
