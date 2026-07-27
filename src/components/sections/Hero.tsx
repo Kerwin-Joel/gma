@@ -22,15 +22,29 @@ export function Hero({ onBooking, ready = true }: HeroProps) {
   const mob = useMobile(768);
   const tab = useMobile(1024);
   const [portrait, setPortrait] = useState(() => window.innerHeight > window.innerWidth);
+  // Landscape tablet: viewport corto (< 900px alto) y ancho (no mobile)
+  const [shortLandscape, setShortLandscape] = useState(
+    () => window.innerHeight < 900 && window.innerWidth > window.innerHeight
+  );
 
   useEffect(() => {
-    const fn = () => setPortrait(window.innerHeight > window.innerWidth);
+    const fn = () => {
+      setPortrait(window.innerHeight > window.innerWidth);
+      setShortLandscape(window.innerHeight < 900 && window.innerWidth > window.innerHeight);
+    };
     window.addEventListener("resize", fn, { passive: true });
     return () => window.removeEventListener("resize", fn);
   }, []);
 
   if (mob) return <HeroMobile onBooking={onBooking} ready={ready} />;
-  return <HeroDesktop onBooking={onBooking} tab={tab} tabPortrait={tab && portrait} />;
+  return (
+    <HeroDesktop
+      onBooking={onBooking}
+      tab={tab}
+      tabPortrait={tab && portrait}
+      shortLandscape={shortLandscape}
+    />
+  );
 }
 
 const EO = "cubic-bezier(0.16,1,0.3,1)";
@@ -188,7 +202,7 @@ function HeroMobile({ onBooking, ready = true }: HeroProps) {
   );
 }
 
-function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean; tabPortrait?: boolean }) {
+function HeroDesktop({ onBooking, tab, tabPortrait, shortLandscape }: HeroProps & { tab: boolean; tabPortrait?: boolean; shortLandscape?: boolean }) {
   return (
     <section
       style={{
@@ -236,8 +250,8 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
           maxWidth: 1160,
           margin: "0 auto",
           width: "100%",
-          padding: tabPortrait ? "80px 32px 40px" : tab ? "60px 32px 60px" : "110px 64px 56px",
-          gap: tabPortrait ? 0 : tab ? 40 : 48,
+          padding: tabPortrait ? "80px 32px 40px" : (tab || shortLandscape) ? "60px 32px 60px" : "110px 64px 56px",
+          gap: tabPortrait ? 0 : (tab || shortLandscape) ? 40 : 48,
           flexDirection: tabPortrait ? "column" : "row",
           position: "relative",
           zIndex: 1,
@@ -247,7 +261,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
         <div
           style={{
             flex: "0 0 auto",
-            width: tabPortrait ? "100%" : tab ? "50%" : "48%",
+            width: tabPortrait ? "100%" : (tab || shortLandscape) ? "50%" : "48%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
@@ -275,7 +289,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
           <p
             className="s3"
             style={{
-              fontSize: tabPortrait ? 16 : tab ? 14.5 : 16,
+              fontSize: tabPortrait ? 16 : (tab || shortLandscape) ? 14.5 : 16,
               color: "var(--body)",
               lineHeight: 1.85,
               marginBottom: 32,
@@ -316,7 +330,7 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
-            minHeight: tabPortrait ? 360 : tab ? 360 : 560,
+            minHeight: tabPortrait ? 360 : (tab || shortLandscape) ? 360 : 560,
           }}
         >
           <div
@@ -325,8 +339,8 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
               bottom: 0,
               left: "50%",
               transform: "translateX(-50%)",
-              width: tabPortrait ? 320 : tab ? 280 : 420,
-              height: tabPortrait ? 360 : tab ? 340 : 500,
+              width: tabPortrait ? 320 : (tab || shortLandscape) ? 280 : 420,
+              height: tabPortrait ? 360 : (tab || shortLandscape) ? 340 : 500,
               background: GRADIENT,
               borderRadius: "60% 40% 55% 45% / 60% 55% 45% 40%",
               opacity: 0.13,
@@ -339,8 +353,8 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
               bottom: 20,
               left: "50%",
               transform: "translateX(-50%)",
-              width: tabPortrait ? 300 : tab ? 260 : 400,
-              height: tabPortrait ? 340 : tab ? 320 : 480,
+              width: tabPortrait ? 300 : (tab || shortLandscape) ? 260 : 400,
+              height: tabPortrait ? 340 : (tab || shortLandscape) ? 320 : 480,
               border: "1.5px dashed rgba(var(--p-rgb),.22)",
               borderRadius: "60% 40% 55% 45% / 60% 55% 45% 40%",
               zIndex: 0,
@@ -351,8 +365,8 @@ function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean
             style={{
               position: "relative",
               zIndex: 1,
-              width: tabPortrait ? 300 : tab ? 260 : 380,
-              height: tabPortrait ? 360 : tab ? 340 : 500,
+              width: tabPortrait ? 300 : (tab || shortLandscape) ? 260 : 380,
+              height: tabPortrait ? 360 : (tab || shortLandscape) ? 340 : 500,
               borderRadius: "48% 52% 44% 56% / 52% 48% 52% 48%",
               overflow: "hidden",
               boxShadow: "0 32px 80px rgba(13,27,42,.18)",
