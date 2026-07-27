@@ -30,7 +30,7 @@ const TESTIMONIALS: Testimonial[] = [
     rating: 5,
     date: "Noviembre 2024",
     featured: true,
-    text: "Llevaba años sin hacerme un examen de la vista. El Dr. Mendoza fue increíblemente paciente y detallado. Me detectaron un astigmatismo que no sabía que tenía. Los lentes nuevos cambiaron mi calidad de vida por completo. Nunca más voy a dejar pasar tanto tiempo sin revisarme.",
+    text: "Llevaba años sin hacerme un examen de la vista. El Dr. Santamaría fue increíblemente paciente y detallado. Me detectaron un astigmatismo que no sabía que tenía. Los lentes nuevos cambiaron mi calidad de vida por completo. Nunca más voy a dejar pasar tanto tiempo sin revisarme.",
   },
   {
     name: "Carlos Huamán Ríos",

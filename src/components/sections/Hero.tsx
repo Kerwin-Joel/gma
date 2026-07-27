@@ -33,7 +33,6 @@ function HeroMobile({ onBooking, ready = true }: HeroProps) {
 
   const slide = (delay: number): CSSProperties => {
     if (wasReady.current) return {};
-    // transition siempre puesta — si coincide con el cambio de opacity, el browser anima
     return {
       opacity: ready ? 1 : 0,
       transform: ready ? "translateY(0)" : "translateY(18px)",
@@ -48,167 +47,80 @@ function HeroMobile({ onBooking, ready = true }: HeroProps) {
         position: "relative",
         overflow: "hidden",
         display: "flex",
-        flexDirection: "column",
         background: "#1A0A19",
       }}
     >
-      {/* Foto — cara nítida, overlay reducido */}
-      <div style={{ position: "absolute", inset: 0, zIndex: 0 }}>
+      {/* Foto full bleed — cubre todo el ancho */}
+      <div style={{ position: "absolute", inset: 0 }}>
         <img
           src={DOCTOR_IMG}
-          alt="Especialista Ópticas GMA"
+          alt="Dr. Antonio Santamaría — Ópticas GMA"
           fetchPriority="high"
           decoding="async"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "20%",
+            objectPosition: "28% top",
             opacity: wasReady.current ? 1 : ready ? 1 : 0,
             transition: wasReady.current ? "none" : `opacity 900ms ${EO}`,
           }}
         />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "linear-gradient(to bottom, rgba(26,10,25,0) 0%, rgba(26,10,25,.02) 28%, rgba(26,10,25,.38) 52%, rgba(26,10,25,.72) 100%)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            background:
-              "radial-gradient(ellipse at center, transparent 58%, rgba(26,10,25,.18) 100%)",
-          }}
-        />
       </div>
 
-      {/* Spacer superior — más pequeño para subir la identidad */}
-      <div style={{ flex: 3 }} />
+      {/* Vignette suave top y bottom */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(to bottom, rgba(26,10,25,.35) 0%, transparent 25%, transparent 70%, rgba(26,10,25,.5) 100%)",
+          pointerEvents: "none",
+        }}
+      />
 
-      {/* [1] Firma identidad — izquierda, ancho contenido */}
+      {/* Columna izquierda: contenido con backdrop oscuro solo detrás del texto */}
       <div
         style={{
           position: "relative",
           zIndex: 2,
-          padding: "0 20px",
-          alignSelf: "flex-start",
-          maxWidth: "62%",
-          ...slide(0),
+          width: "60%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          padding: "72px 12px 24px 20px",
+          minHeight: "100%",
+          background:
+            "linear-gradient(to right, rgba(26,10,25,.80) 0%, rgba(26,10,25,.74) 18%, rgba(26,10,25,.58) 36%, rgba(26,10,25,.36) 55%, rgba(26,10,25,.14) 74%, rgba(26,10,25,.03) 88%, transparent 100%)",
         }}
       >
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 8,
-            marginBottom: 9,
-          }}
-        >
-          <div
-            style={{
-              width: 22,
-              height: 22,
-              borderRadius: 7,
-              background: PRIMARY,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              flexShrink: 0,
-            }}
-          >
-            <Eye size={12} color="#fff" strokeWidth={1.8} />
-          </div>
+        {/* Etiqueta */}
+        <div style={{ marginBottom: 7, ...slide(0) }}>
           <span
             style={{
-              fontSize: 8.5,
+              fontSize: 8,
               fontWeight: 700,
-              letterSpacing: ".14em",
+              letterSpacing: ".12em",
               textTransform: "uppercase",
-              color: "var(--bg)",
+              color: "rgba(255,255,255,.32)",
             }}
           >
             Ópticas GMA
           </span>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 5,
-            marginBottom: 3,
-          }}
-        >
-          <span
-            style={{
-              fontFamily: "var(--hf)",
-              fontWeight: "bold",
-              fontSize: 17,
-              color: "white",
-              letterSpacing: "-.015em",
-            }}
-          >
-            Antonio Santamaría
-          </span>
-          <BadgeCheck size={13} color={PRIMARY} style={{ flexShrink: 0 }} />
-        </div>
-        <div
-          style={{
-            fontSize: 10.5,
-            color: "rgba(255,255,255)",
-            marginBottom: 7,
-          }}
-        >
-          Director General · Optómetra
-        </div>
-        <div
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: 4,
-            padding: "4px 9px",
-            background: "rgba(208,51,224,.12)",
-            border: "0.5px solid rgba(208,51,224,.28)",
-            borderRadius: 20,
-          }}
-        >
-          <Shield size={10} color="#DC58E8" />
-          <span
-            style={{
-              fontSize: 8.5,
-              fontWeight: 700,
-              color: "var(--bg)",
-              whiteSpace: "nowrap",
-              letterSpacing: ".03em",
-            }}
-          >
-            Optómetra Cert.
-          </span>
-        </div>
-      </div>
 
-      {/* Spacer inferior — más grande para bajar el contenido */}
-      <div style={{ flex: 2 }} />
-
-      {/* Contenido — H1 + CTAs pegados al fondo */}
-      <div style={{ position: "relative", zIndex: 2, padding: "0 20px 20px" }}>
-        {/* [2] H1 */}
+        {/* H1 */}
         <h1
           style={{
             color: "#fff",
-            marginBottom: 10,
-            lineHeight: 1.07,
-            fontSize: "clamp(26px,7vw,34px)",
-            letterSpacing: "-.025em",
-            ...slide(90),
+            marginBottom: 12,
+            lineHeight: 1.1,
+            fontSize: "clamp(22px,6.5vw,28px)",
+            letterSpacing: "-.022em",
+            ...slide(80),
           }}
         >
-          Tu visión, en manos
-          <br />
-          de{" "}
+          Tu visión, en manos de{" "}
           <span
             style={{
               background: "white",
@@ -222,45 +134,44 @@ function HeroMobile({ onBooking, ready = true }: HeroProps) {
           .
         </h1>
 
-        {/* [3] CTA principal */}
-        <div style={{ marginBottom: 8, ...slide(180) }}>
+        {/* Identidad — borde izquierdo magenta */}
+        <div
+          style={{
+            borderLeft: "2px solid #E83EF0",
+            paddingLeft: 10,
+            marginBottom: 14,
+            ...slide(150),
+          }}
+        >
+          <div
+            style={{
+              fontSize: 11,
+              fontWeight: 700,
+              color: "#fff",
+              letterSpacing: "-.01em",
+              marginBottom: 2,
+            }}
+          >
+            Antonio Santamaría
+          </div>
+          <div style={{ fontSize: 9, color: "rgba(255,255,255,.45)" }}>
+            Director General · Optómetra
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div style={{ marginBottom: 14, ...slide(210) }}>
           <button
             className="btn"
-            style={{
-              padding: "13px 22px",
-              justifyContent: "center",
-              width: "100%",
-            }}
+            style={{ padding: "12px 16px", justifyContent: "center", width: "100%" }}
             onClick={onBooking}
           >
-            Reservar Cita <ArrowRight size={14} />
+            Reservar Cita <ArrowRight size={13} />
           </button>
         </div>
 
-        {/* Enlace secundario */}
-        <div style={{ marginBottom: 18, ...slide(240) }}>
-          <button
-            style={{
-              background: "none",
-              border: "none",
-              color: "rgba(255,255,255,.42)",
-              fontSize: 12,
-              fontFamily: "var(--sf)",
-              fontWeight: 600,
-              letterSpacing: ".04em",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              gap: 5,
-              padding: 0,
-            }}
-          >
-            Conoce la clínica <ArrowRight size={11} />
-          </button>
-        </div>
-
-        {/* Prueba social */}
-        <div style={{ ...slide(300) }}>
+        {/* Social proof */}
+        <div style={{ ...slide(270) }}>
           <AvatarRow />
         </div>
       </div>

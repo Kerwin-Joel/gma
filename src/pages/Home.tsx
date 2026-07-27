@@ -51,7 +51,7 @@ export function Home() {
     <>
       <PageSEO
         title="Ópticas GMA | Especialistas en Salud Visual — Jaén, Cajamarca"
-        description="Ópticas GMA en Jaén, Cajamarca. Examen de la vista, graduación de lentes, consulta oftalmológica y salud visual infantil. Dr. Alfredo Mendoza — más de 15 años cuidando tu visión."
+        description="Ópticas GMA en Jaén, Cajamarca. Examen de la vista, graduación de lentes, consulta oftalmológica y salud visual infantil. Dr. Antonio Santamaría — más de 15 años cuidando tu visión."
         path="/"
         keywords="ópticas Jaén, optometría Jaén, examen de vista Jaén, lentes Cajamarca, oftalmólogo Jaén, salud visual Perú"
         jsonLd={faqSchema([
