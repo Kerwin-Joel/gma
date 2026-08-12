@@ -3,17 +3,20 @@
  *
  * Las secciones usan `content-visibility: auto`, así que mientras están fuera
  * de pantalla ocupan lo que diga `contain-intrinsic-size` y no su alto real.
- * Al hacer scroll se van renderizando, el documento crece y el destino se
- * desplaza hacia abajo — un `scrollIntoView` suelto apunta a la posición
- * estimada y se queda corto (se nota sobre todo en las secciones bajas, como
- * #tienda). Reapuntamos hasta que la posición del destino deje de moverse.
+ * Si se llama a `scrollIntoView` tal cual, el destino se calcula sumando esos
+ * placeholders y el scroll se queda corto: para #tienda son ~2000px en móvil,
+ * más de dos pantallas.
+ *
+ * La solución es desactivar `content-visibility` y forzar un reflow ANTES de
+ * fijar el destino, para que el layout ya tenga las alturas reales. No se
+ * vuelve a activar a propósito: `contain-intrinsic-size: auto` no conserva el
+ * alto medido, así que restaurarlo encogería la página de golpe al terminar la
+ * animación. Y a estas alturas ya no hace falta — lo que optimiza es la carga
+ * inicial, que para cuando el usuario pulsa un enlace del menú ya ha pasado.
  */
-
-let activeRun = 0;
 
 export function scrollToSection(id: string) {
   if (id === "inicio") {
-    activeRun++;
     window.scrollTo({ top: 0, behavior: "smooth" });
     return;
   }
@@ -21,18 +24,11 @@ export function scrollToSection(id: string) {
   const el = document.getElementById(id);
   if (!el) return;
 
-  const run = ++activeRun;
-  let prev = -1;
-  let tries = 0;
+  const root = document.documentElement;
+  if (!root.classList.contains("cv-off")) {
+    root.classList.add("cv-off");
+    void root.offsetHeight; // fuerza el reflow con las alturas reales
+  }
 
-  const step = () => {
-    if (run !== activeRun) return; // otra navegación tomó el control
-    const top = Math.round(el.getBoundingClientRect().top + window.scrollY);
-    if (top === prev || tries++ > 12) return; // posición estable
-    prev = top;
-    el.scrollIntoView({ behavior: "smooth", block: "start" });
-    setTimeout(step, 150);
-  };
-
-  step();
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
 }

@@ -181,6 +181,11 @@ section {
      fuera de pantalla mide 400px y el scroll a secciones bajas se queda corto */
   contain-intrinsic-size: auto 400px;
 }
+/* Al saltar a una sección se desactiva de forma permanente para poder medir
+   alturas reales; restaurarlo encogería la página — ver utils/scroll.ts */
+html.cv-off section {
+  content-visibility: visible;
+}
 /* Compensa nav fijo en scroll de secciones */
 #nosotros, #servicios, #tienda, #blog, #contacto {
   scroll-margin-top: 80px;
