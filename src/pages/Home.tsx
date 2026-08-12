@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { PageSEO } from "../components/seo/PageSEO";
 import { faqSchema } from "../seo/schemas";
+import { scrollToSection } from "../utils/scroll";
 import { Nav } from "../components/layout/Nav";
 import { MobileDrawer } from "../components/layout/MobileDrawer";
 import { BookingModal } from "../components/ui/BookingModal";
@@ -41,9 +42,7 @@ export function Home() {
   useEffect(() => {
     const scrollTo = (location.state as { scrollTo?: string } | null)?.scrollTo;
     if (!scrollTo) return;
-    const el = document.getElementById(scrollTo);
-    if (!el) return;
-    const t = setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 80);
+    const t = setTimeout(() => scrollToSection(scrollTo), 80);
     return () => clearTimeout(t);
   }, [location.state]);
 

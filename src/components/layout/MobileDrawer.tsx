@@ -2,10 +2,11 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   ArrowRight, ChevronRight, ChevronDown,
-  Home, Eye, Users, MapPin, Phone, Clock, BookOpen,
+  Home, Eye, Users, MapPin, Phone, Clock, BookOpen, ShoppingBag,
 } from "lucide-react";
 import { Logo } from "../ui/Logo";
 import { WAIcon } from "../ui/WAIcon";
+import { scrollToSection } from "../../utils/scroll";
 import { SVCS } from "../../data/services";
 
 interface MobileDrawerProps {
@@ -17,9 +18,10 @@ interface MobileDrawerProps {
 const LINKS = [
   { label: "Inicio",    sub: "Página principal",       icon: <Home size={18} />,     sectionId: "inicio" },
   { label: "Servicios", sub: "Exámenes y tratamientos", icon: <Eye size={18} />,      hasSubmenu: true },
-  { label: "Nosotros",  sub: "Quiénes somos",           icon: <Users size={18} />,    route: "/nosotros" },
-  { label: "Blog",      sub: "Artículos y consejos",    icon: <BookOpen size={18} />, route: "/blog" },
-  { label: "Contacto",  sub: "Ubicación y horarios",    icon: <MapPin size={18} />,   sectionId: "contacto" },
+  { label: "Nosotros",  sub: "Quiénes somos",           icon: <Users size={18} />,       route: "/nosotros" },
+  { label: "Blog",      sub: "Artículos y consejos",    icon: <BookOpen size={18} />,    route: "/blog" },
+  { label: "Tienda",    sub: "Lentes y accesorios",     icon: <ShoppingBag size={18} />, sectionId: "tienda" },
+  { label: "Contacto",  sub: "Ubicación y horarios",    icon: <MapPin size={18} />,      sectionId: "contacto" },
 ];
 
 export function MobileDrawer({ open, onClose, onBooking }: MobileDrawerProps) {
@@ -35,12 +37,8 @@ export function MobileDrawer({ open, onClose, onBooking }: MobileDrawerProps) {
     onClose();
     if (!sectionId) return;
     const isHome = window.location.pathname === "/";
-    const scroll = () => {
-      if (sectionId === "inicio") { window.scrollTo({ top: 0, behavior: "smooth" }); return; }
-      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
-    };
     if (isHome) {
-      setTimeout(scroll, 340);
+      setTimeout(() => scrollToSection(sectionId), 340);
     } else {
       navigate("/", { state: { scrollTo: sectionId } });
     }
