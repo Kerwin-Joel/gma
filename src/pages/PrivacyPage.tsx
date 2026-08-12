@@ -7,6 +7,7 @@ import { MobileDrawer } from "../components/layout/MobileDrawer";
 import { BookingModal } from "../components/ui/BookingModal";
 import { WAIcon } from "../components/ui/WAIcon";
 import { useMobile } from "../hooks/useMobile";
+import { scrollToSection } from "../utils/scroll";
 
 interface Section { id: string; title: string; content: string[] }
 
@@ -152,7 +153,7 @@ export function PrivacyPage() {
 
   const scrollTo = (id: string) => {
     setActive(id);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToSection(id);
   };
 
   return (

@@ -1,4 +1,4 @@
-﻿import { useRef, type CSSProperties } from "react";
+﻿import { useRef, useState, useEffect, type CSSProperties } from "react";
 import { Img } from "../ui/Img";
 import {
   ArrowRight,
@@ -8,7 +8,6 @@ import {
   MapPin,
   Shield,
 } from "lucide-react";
-import { Pill } from "../ui/Badge";
 import { InfoBar } from "../layout/InfoBar";
 import { GRADIENT, PRIMARY, DOCTOR_IMG } from "../../constants/theme";
 import { useMobile } from "../../hooks/useMobile";
@@ -21,9 +20,18 @@ interface HeroProps {
 export function Hero({ onBooking, ready = true }: HeroProps) {
   const mob = useMobile(768);
   const tab = useMobile(1024);
+  const [portrait, setPortrait] = useState(() => window.innerHeight > window.innerWidth);
+
+  useEffect(() => {
+    const fn = () => setPortrait(window.innerHeight > window.innerWidth);
+    window.addEventListener("resize", fn, { passive: true });
+    return () => window.removeEventListener("resize", fn);
+  }, []);
 
   if (mob) return <HeroMobile onBooking={onBooking} ready={ready} />;
-  return <HeroDesktop onBooking={onBooking} tab={tab} />;
+  return (
+    <HeroDesktop onBooking={onBooking} tab={tab} tabPortrait={tab && portrait} />
+  );
 }
 
 const EO = "cubic-bezier(0.16,1,0.3,1)";
@@ -181,11 +189,11 @@ function HeroMobile({ onBooking, ready = true }: HeroProps) {
   );
 }
 
-function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
+function HeroDesktop({ onBooking, tab, tabPortrait }: HeroProps & { tab: boolean; tabPortrait?: boolean }) {
   return (
     <section
       style={{
-        minHeight: "100vh",
+        minHeight: "100dvh",
         background:
           "linear-gradient(135deg,#FFF7FA 0%,#F7FAFD 50%,#F2F6FB 100%)",
         position: "relative",
@@ -225,12 +233,13 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
           flex: 1,
           display: "flex",
           alignItems: "center",
+          justifyContent: tabPortrait ? "center" : undefined,
           maxWidth: 1160,
           margin: "0 auto",
           width: "100%",
-          padding: tab ? "110px 32px 48px" : "110px 64px 56px",
-          gap: tab ? 40 : 48,
-          flexDirection: "row",
+          padding: tabPortrait ? "80px 32px 40px" : tab ? "60px 32px 60px" : "110px 64px 56px",
+          gap: tabPortrait ? 0 : tab ? 40 : 48,
+          flexDirection: tabPortrait ? "column" : "row",
           position: "relative",
           zIndex: 1,
         }}
@@ -239,18 +248,23 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
         <div
           style={{
             flex: "0 0 auto",
-            width: tab ? "50%" : "48%",
+            width: tabPortrait ? "100%" : tab ? "50%" : "48%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            alignItems: tabPortrait ? "center" : "flex-start",
+            textAlign: tabPortrait ? "center" : "left",
+            marginBottom: tabPortrait ? 40 : 0,
           }}
         >
-          <Pill className="s1" style={{ marginBottom: 20 }}>
-            Especialistas en Salud Visual · Norte del Perú
-          </Pill>
           <h1
             className="s2"
-            style={{ marginBottom: 18, lineHeight: 1.08, color: "var(--head)" }}
+            style={{
+              marginBottom: 18,
+              lineHeight: 1.08,
+              color: "var(--head)",
+              fontSize: tabPortrait ? "clamp(36px, 6vw, 52px)" : undefined,
+            }}
           >
             Tu visión, en manos
             <br />
@@ -259,15 +273,16 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
           <p
             className="s3"
             style={{
-              fontSize: tab ? 14.5 : 16,
+              fontSize: tabPortrait ? 16 : tab ? 14.5 : 16,
               color: "var(--body)",
               lineHeight: 1.85,
               marginBottom: 32,
-              maxWidth: 420,
+              maxWidth: tabPortrait ? 560 : 420,
             }}
           >
             Más de 14 años cuidando la salud visual de las familias del norte
-            del Perú, con tecnología de diagnóstico moderna y un trato cercano.
+            del Perú, con tecnología de diagnóstico moderna, trato cercano y
+            especialistas en salud visual.
           </p>
           <div
             className="s4"
@@ -276,6 +291,7 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
               gap: 12,
               flexWrap: "wrap",
               marginBottom: 36,
+              justifyContent: tabPortrait ? "center" : "flex-start",
             }}
           >
             <button className="btn" onClick={onBooking}>
@@ -291,12 +307,15 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
         {/* RIGHT */}
         <div
           style={{
-            flex: 1,
+            flex: tabPortrait ? "0 0 auto" : 1,
+            width: tabPortrait ? "100%" : undefined,
+            maxWidth: tabPortrait ? 520 : undefined,
+            alignSelf: tabPortrait ? "center" : undefined,
             position: "relative",
             display: "flex",
             alignItems: "flex-end",
             justifyContent: "center",
-            minHeight: tab ? 480 : 560,
+            minHeight: tabPortrait ? 360 : tab ? 360 : 560,
           }}
         >
           <div
@@ -305,8 +324,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
               bottom: 0,
               left: "50%",
               transform: "translateX(-50%)",
-              width: tab ? 340 : 420,
-              height: tab ? 420 : 500,
+              width: tabPortrait ? 320 : tab ? 280 : 420,
+              height: tabPortrait ? 360 : tab ? 340 : 500,
               background: GRADIENT,
               borderRadius: "60% 40% 55% 45% / 60% 55% 45% 40%",
               opacity: 0.13,
@@ -319,8 +338,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
               bottom: 20,
               left: "50%",
               transform: "translateX(-50%)",
-              width: tab ? 320 : 400,
-              height: tab ? 400 : 480,
+              width: tabPortrait ? 300 : tab ? 260 : 400,
+              height: tabPortrait ? 340 : tab ? 320 : 480,
               border: "1.5px dashed rgba(var(--p-rgb),.22)",
               borderRadius: "60% 40% 55% 45% / 60% 55% 45% 40%",
               zIndex: 0,
@@ -331,8 +350,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
             style={{
               position: "relative",
               zIndex: 1,
-              width: tab ? 300 : 380,
-              height: tab ? 400 : 500,
+              width: tabPortrait ? 300 : tab ? 260 : 380,
+              height: tabPortrait ? 360 : tab ? 340 : 500,
               borderRadius: "48% 52% 44% 56% / 52% 48% 52% 48%",
               overflow: "hidden",
               boxShadow: "0 32px 80px rgba(13,27,42,.18)",
@@ -356,8 +375,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
             className="float"
             style={{
               position: "absolute",
-              top: tab ? 60 : 40,
-              right: tab ? 0 : 20,
+              top: tabPortrait ? 20 : tab ? 60 : 40,
+              right: tabPortrait ? 16 : tab ? 0 : 20,
               zIndex: 3,
               background: "#fff",
               borderRadius: 14,
@@ -406,8 +425,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
             className="float-slow"
             style={{
               position: "absolute",
-              bottom: tab ? 60 : 80,
-              left: tab ? -10 : 0,
+              bottom: tabPortrait ? 60 : tab ? 60 : 80,
+              left: tabPortrait ? 16 : tab ? -10 : 0,
               zIndex: 3,
               background: "#fff",
               borderRadius: 16,
@@ -492,8 +511,8 @@ function HeroDesktop({ onBooking, tab }: HeroProps & { tab: boolean }) {
           <div
             style={{
               position: "absolute",
-              bottom: tab ? 20 : 30,
-              right: tab ? 0 : 10,
+              bottom: tabPortrait ? 16 : tab ? 20 : 30,
+              right: tabPortrait ? 16 : tab ? 0 : 10,
               zIndex: 3,
               background: "#fff",
               borderRadius: 12,

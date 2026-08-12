@@ -5,7 +5,7 @@ Allow: /
 Disallow: /src/
 
 # Sitemaps
-Sitemap: https://www.opticasgma.com/sitemap.xml
+Sitemap: https://opticasgma.com/sitemap.xml
 
 # Crawl-delay para bots agresivos
 User-agent: AhrefsBot

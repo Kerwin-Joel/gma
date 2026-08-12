@@ -1,6 +1,6 @@
 /* Schemas JSON-LD reutilizables por página */
 
-const BASE = "https://www.opticasgma.com";
+const BASE = "https://opticasgma.com";
 
 export const businessRef = { "@id": `${BASE}/#business` };
 export const doctorRef   = { "@id": `${BASE}/#doctor` };

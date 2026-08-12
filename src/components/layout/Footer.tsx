@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowRight, MessageCircle } from "lucide-react";
+import { scrollToSection } from "../../utils/scroll";
 
 const IgIcon = ({ size = 14 }) => (
   <svg
@@ -309,7 +310,7 @@ export function Footer() {
 
   const goSection = (id: string) => {
     if (window.location.pathname === "/") {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection(id);
     } else {
       nav("/", { state: { scrollTo: id } });
     }

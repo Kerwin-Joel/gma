@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Logo } from "../ui/Logo";
 import { SVCS } from "../../data/services";
 import { useMobile } from "../../hooks/useMobile";
+import { scrollToSection } from "../../utils/scroll";
 
 interface NavProps {
   scrolled: boolean;
@@ -38,7 +39,7 @@ export function Nav({
 
   const goSection = (id: string) => {
     if (window.location.pathname === "/") {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      scrollToSection(id);
     } else {
       navigate("/", { state: { scrollTo: id } });
     }
@@ -149,6 +150,11 @@ export function Nav({
             {/* Blog */}
             <button className="nav-link" onClick={() => navigate("/blog")}>
               Blog
+            </button>
+
+            {/* Tienda */}
+            <button className="nav-link" onClick={() => goSection("tienda")}>
+              Tienda
             </button>
 
             {/* Contacto */}
